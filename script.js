@@ -11,43 +11,27 @@ function Book(title, author, pages, read) {
     }
 }
 
-function addBookToLibrary() {
-    let book = new Book('The hobbit', 'zack snider', 222, true)
-    myLibrary.push(book)
-    let book2 = new Book('Harry Potter', 'Harley Quinn', 5000, false)
-    myLibrary.push(book2)
+function addBookToLibrary(title, author, pages, read) {
+    let book = new Book(title, author, pages, read)
+    myLibrary.push(book)    
 }
 
 function displayBooks() {
     for(let i = 0; i < myLibrary.length; i++) {
         console.log(myLibrary[i].info())
+    let book = document.createElement('div')
+    book.innerText = myLibrary[i].info()
+    document.getElementById('books-list').append(book)
     }
 }
 
-function submit_form() {
-    let bookname = document.getElementById('bname').innerText
-    let book = new Book(bookname, 'someone', 55, false)
-    myLibrary.push(book)
-    alert('Form Submitted Successfully')
-    displayBooks()
-}
 
 
 
+addBookToLibrary('The Hobbit', 'Green', 223, false)
+addBookToLibrary('Atomic habbits', 'john cena', 269, true)
 
-
-const hide = document.createAttribute('hidden')
-const closeBookAdder = document.getElementById('form-close')
-closeBookAdder.addEventListener('click', () => {
-    console.log('clicked')
-    document.getElementById('form-field').setAttributeNode(hide)
-})
-
-
-const addBook = document.getElementById('add-book')
-addBook.addEventListener('click', () => {
-    document.getElementById('form-field').removeAttribute('hidden')
-})
+displayBooks()
 
 
 

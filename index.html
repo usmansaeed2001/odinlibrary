@@ -9,26 +9,6 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-    <button id="add-book">Add Book</button>
-    <div id="library">
-        <div id="book1">Something</div>
-    </div>
-
-
-
-    <div id="form-field" hidden>
-        <button id="form-close">Close</button>
-        <form id="input-book-form" onsubmit="submit_form()">
-            <label for="bname">Book Name:</label>
-            <input type="text" id="bname" name="bname"><br>
-            <label for="aname">Author Name:</label>
-            <input type="text" id="aname" name="aname"><br>
-            <label for="pages">Pages:</label>
-            <input type="number" id="pages" name="pages"><br>
-            <label for="read">I have read the book</label>
-            <input type="checkbox" id="read" name="read"><br>
-            <button type="submit">Add Book</button>
-        </form>
-    </div>
+    <div id="books-list"></div>
 </body>
 </html>
