@@ -12,20 +12,58 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(title, author, pages, read) {
-     let newBook = new Book(title, author, pages, read)
-     myLibrary.push(newBook)
+     let book = new Book(title, author, pages, read)
+     myLibrary.push(book)
 }
 
 function displayBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
-        let book = document.createElement('div')
-        book.setAttribute('class', 'books')
-        bookGrid.append(book)
+        console.log(myLibrary[i].info())
     }
 }
 
-let bookGrid = document.getElementById('main-body')
+function validateForm(event){
+    event.preventDefault();
+}
 
-addBookToLibrary('The New', 'Jamshed', 99, false)
-addBookToLibrary('The New', 'Jamshed', 199, true)
-displayBooks()
+function formValid(form) {
+    return true
+}
+
+
+
+const addBookButton = document.getElementById('add-book')
+const formContainer = document.getElementById('form-container')
+const closeFormButton = document.getElementById('close-form')
+const hide = document.createAttribute('hidden')
+const form = document.getElementById('form')
+const submitForm = document.getElementById('submit')
+
+
+
+
+
+
+addBookButton.addEventListener('click', () => {
+    formContainer.removeAttribute('hidden')
+})
+
+
+closeFormButton.addEventListener('click', () => {
+    console.log('here')
+    formContainer.setAttributeNode(hide)
+})
+
+submitForm.addEventListener('click', () => {
+    formContainer.setAttributeNode(hide)
+    const formData = new FormData(form)
+    console.log(typeof(formData))
+    for (const [key, value] of formData) {
+        console.log(`${key}: ${value}\n`)
+      }
+
+      if(formValid(form)) {
+        addBookToLibrary(formData.get(bname), formData.get(aname), formData.get(pages), true)
+      }
+      displayBooks()
+})

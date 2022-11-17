@@ -16,8 +16,20 @@
         
     </div>
 
-    <div id="form">
-
+    <div id="form-container" hidden>
+        <button id="close-form">Close</button>
+        <form id="form" onsubmit="validateForm(event)">
+            <h3>Add Book</h3>
+            <label for="bname">Book Name:</label>
+            <input type="text" name="bname" id="bname" required><br>
+            <label for="aname">Author Name:</label>
+            <input type="text" name="aname" id="aname" required><br>
+            <label for="pages">Enter Pages:</label>
+            <input type="number" name="pages" id="pages" required><br>
+            <label for="checkbox">I have read the book</label>
+            <input type="checkbox" name="checkbox" id="checkbox"><br>
+            <button type="submit" name="submit" id="submit">Add Book</button>
+        </form>
     </div>
 
 </body>

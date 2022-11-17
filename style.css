@@ -33,12 +33,14 @@ body {
     border: 1px solid black;
 }
 
-#form {
+#form-container {
     position: fixed;
-    width: 200px;
-    height: 200px;
-    background-color: black;
-    top: 400px;
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    top: 100px;
     right: 500px;
+    border-radius: 10%;
+    padding: 20px;
 }
 
