@@ -29,7 +29,7 @@ function displayBooks() {
     }
 }
 
-function validateForm(event){
+function stopRequest(event){
     event.preventDefault();
 }
 
