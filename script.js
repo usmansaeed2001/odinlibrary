@@ -12,7 +12,14 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(form) {
-     let book = new Book(form["bname"].value, form["aname"].value, form["pages"].value, form["checkbox"].value)
+    let checkbox = document.getElementById('checkbox')
+    let book
+    if (checkbox.checked == true) {
+        book = new Book(form["bname"].value, form["aname"].value, form["pages"].value, true)
+    }
+    else {
+        book = new Book(form["bname"].value, form["aname"].value, form["pages"].value, false)
+    }
      myLibrary.push(book)
 }
 
@@ -29,8 +36,9 @@ function validateForm(event){
 function formValid() {
     let name = form["bname"].value
     let author = form["aname"].value
-    if(name === "" || author === "") {
-        alert('Form must be filled')
+    let pageNumber = form["pages"].value
+    if(name === "" || author === "" || isNaN(pageNumber) || pageNumber < 1){
+        alert('Oops something is wrong, Please check your data again')
         return false
     }
     return true
@@ -64,10 +72,8 @@ submitForm.addEventListener('click', () => {
       if(formValid()) {
         console.log("form validated")
         addBookToLibrary(form)
+        form.reset()
+        formContainer.setAttributeNode(hide)
       }
-      else {
-        alert('Please Fill out the form')
-      }
-      formContainer.setAttributeNode(hide)
       displayBooks()
 })
