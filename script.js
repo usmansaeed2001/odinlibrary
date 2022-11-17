@@ -12,13 +12,20 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(title, author, pages, read) {
-     
+     let newBook = new Book(title, author, pages, read)
+     myLibrary.push(newBook)
 }
 
 function displayBooks() {
-    
+    for (let i = 0; i < myLibrary.length; i++) {
+        let book = document.createElement('div')
+        book.setAttribute('class', 'books')
+        bookGrid.append(book)
+    }
 }
 
+let bookGrid = document.getElementById('main-body')
 
-
-
+addBookToLibrary('The New', 'Jamshed', 99, false)
+addBookToLibrary('The New', 'Jamshed', 199, true)
+displayBooks()
