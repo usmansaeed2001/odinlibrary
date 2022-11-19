@@ -37,6 +37,14 @@ body {
     border: 1px solid black;
 }
 
+.book:hover {
+  transform: scale(1.04);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  transition-duration: 500ms;
+}
+
+
+
 #form-container {
     position: fixed;
     width: minmax(400px, 50%);

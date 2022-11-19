@@ -24,23 +24,33 @@ function addBookToLibrary(form) {
 
 }
 
-let lastBook
+let lastBook = new Book('placeholder', 'placeholder', 69, false)
 function updateLastBookData() {
     lastBook = new Book(myLibrary[myLibrary.length - 1].title, myLibrary[myLibrary.length - 1].author, myLibrary[myLibrary.length - 1].pages, myLibrary[myLibrary.length - 1].read)
 }
+
+const grid = document.getElementById('main-body')
+
 
 function displayBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
         console.log(myLibrary[i].info())
     }
-
-        const tempbook = document.createElement('div')
-        tempbook.setAttribute('class', 'book')
-        const bookheading = document.createElement('h2')
-        bookheading.innerText = myLibrary[myLibrary.length - 1].title
-        tempbook.appendChild(bookheading)
-        const grid = document.getElementById('main-body')
-        grid.appendChild(tempbook)
+    let tempElement = document.createElement('div')
+    tempElement.setAttribute('class', 'book')
+    let bookHeading = document.createElement('h2')
+    let authorName = document.createElement('p')
+    let pages = document.createElement('p')
+    let read = document.createElement('p')
+    bookHeading.innerText = myLibrary[myLibrary.length - 1].title
+    authorName.innerText = myLibrary[myLibrary.length - 1].author
+    pages.innerText = myLibrary[myLibrary.length - 1].pages
+    read.innerText = myLibrary[myLibrary.length - 1].read ? "Read":"Not Read Yet"
+        tempElement.appendChild(bookHeading)
+        tempElement.appendChild(authorName)
+        tempElement.appendChild(pages)
+        tempElement.appendChild(read)
+        grid.appendChild(tempElement)
         
 }
 
