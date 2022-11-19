@@ -42,6 +42,9 @@ function displayBooks() {
     let authorName = document.createElement('p')
     let pages = document.createElement('p')
     let read = document.createElement('p')
+    let removeBook = document.createElement('button')
+    removeBook.innerText = "Remove"
+    removeBook.setAttribute('class', 'remove-button')
     bookHeading.innerText = myLibrary[myLibrary.length - 1].title
     authorName.innerText = myLibrary[myLibrary.length - 1].author
     pages.innerText = myLibrary[myLibrary.length - 1].pages
@@ -50,9 +53,12 @@ function displayBooks() {
         tempElement.appendChild(authorName)
         tempElement.appendChild(pages)
         tempElement.appendChild(read)
+        tempElement.appendChild(removeBook)
         grid.appendChild(tempElement)
+        removeButtons = document.getElementsByClassName('remove-button')
         
 }
+
 
 function stopRequest(event){
     event.preventDefault();
@@ -69,7 +75,7 @@ function formValid() {
     return true
 }
 
-
+let removeButtons = document.getElementsByClassName('remove-button')
 
 const addBookButton = document.getElementById('add-book')
 const formContainer = document.getElementById('form-container')
@@ -77,8 +83,6 @@ const closeFormButton = document.getElementById('close-form')
 const hide = document.createAttribute('hidden')
 const form = document.forms["form"]
 const submitForm = document.getElementById('submit')
-
-
 
 
 

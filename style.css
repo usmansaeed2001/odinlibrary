@@ -32,10 +32,6 @@ body {
 }
 
 
-.books {
-    background-color: crimson;
-    border: 1px solid black;
-}
 
 .book:hover {
   transform: scale(1.04);
