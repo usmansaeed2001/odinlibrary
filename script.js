@@ -27,6 +27,15 @@ function displayBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
         console.log(myLibrary[i].info())
     }
+
+        const tempbook = document.createElement('div')
+        tempbook.setAttribute('class', 'book')
+        const bookheading = document.createElement('h2')
+        bookheading.innerText = myLibrary[myLibrary.length - 1].title
+        tempbook.appendChild(bookheading)
+        const grid = document.getElementById('main-body')
+        grid.appendChild(tempbook)
+        
 }
 
 function stopRequest(event){
