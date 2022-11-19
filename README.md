@@ -1,2 +1,5 @@
-Work in Progress...
-Live Preview: https://usmansaeed2001.github.io/odinlibrary/ (Unfinished as of yet)
+# Library Application
+
+**Note: Site is not finished yet, visit at your own risk**
+
+Live Preview: [Link](https://usmansaeed2001.github.io/odinlibrary/)
