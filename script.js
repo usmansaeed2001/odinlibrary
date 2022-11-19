@@ -31,6 +31,8 @@ function updateLastBookData() {
 
 const grid = document.getElementById('main-body')
 
+let buttonCount = 0
+
 
 function displayBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
@@ -45,6 +47,8 @@ function displayBooks() {
     let removeBook = document.createElement('button')
     removeBook.innerText = "Remove"
     removeBook.setAttribute('class', 'remove-button')
+    removeBook.setAttribute('id', buttonCount.toString())
+    buttonCount += 1
     bookHeading.innerText = myLibrary[myLibrary.length - 1].title
     authorName.innerText = myLibrary[myLibrary.length - 1].author
     pages.innerText = myLibrary[myLibrary.length - 1].pages
@@ -55,8 +59,10 @@ function displayBooks() {
         tempElement.appendChild(read)
         tempElement.appendChild(removeBook)
         grid.appendChild(tempElement)
-        removeButtons = document.getElementsByClassName('remove-button')
-        
+}
+
+function removeElement(button) {
+    console.log(typeof(button))
 }
 
 
@@ -75,7 +81,6 @@ function formValid() {
     return true
 }
 
-let removeButtons = document.getElementsByClassName('remove-button')
 
 const addBookButton = document.getElementById('add-book')
 const formContainer = document.getElementById('form-container')
