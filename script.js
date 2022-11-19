@@ -21,6 +21,12 @@ function addBookToLibrary(form) {
         book = new Book(form["bname"].value, form["aname"].value, form["pages"].value, false)
     }
      myLibrary.push(book)
+
+}
+
+let lastBook
+function updateLastBookData() {
+    lastBook = new Book(myLibrary[myLibrary.length - 1].title, myLibrary[myLibrary.length - 1].author, myLibrary[myLibrary.length - 1].pages, myLibrary[myLibrary.length - 1].read)
 }
 
 function displayBooks() {
