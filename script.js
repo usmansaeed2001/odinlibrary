@@ -24,10 +24,6 @@ function addBookToLibrary(form) {
 
 }
 
-let lastBook = new Book('placeholder', 'placeholder', 69, false)
-function updateLastBookData() {
-    lastBook = new Book(myLibrary[myLibrary.length - 1].title, myLibrary[myLibrary.length - 1].author, myLibrary[myLibrary.length - 1].pages, myLibrary[myLibrary.length - 1].read)
-}
 
 const grid = document.getElementById('main-body')
 
@@ -48,6 +44,7 @@ function displayBooks() {
     removeBook.innerText = "Remove"
     removeBook.setAttribute('class', 'remove-button')
     removeBook.setAttribute('id', buttonCount.toString())
+
     buttonCount += 1
     bookHeading.innerText = myLibrary[myLibrary.length - 1].title
     authorName.innerText = myLibrary[myLibrary.length - 1].author
@@ -59,16 +56,14 @@ function displayBooks() {
         tempElement.appendChild(read)
         tempElement.appendChild(removeBook)
         grid.appendChild(tempElement)
-}
-
-function removeElement(button) {
-    console.log(typeof(button))
+        addEventListenerByClass('remove-button', 'click')
 }
 
 
 function stopRequest(event){
     event.preventDefault();
 }
+
 
 function formValid() {
     let name = form["bname"].value
@@ -81,6 +76,15 @@ function formValid() {
     return true
 }
 
+function addEventListenerByClass(className, event) {
+    var list = document.getElementsByClassName(className);
+    for (var i = 0, len = list.length; i < len; i++) {
+        list[i].addEventListener(event, e => {
+            console.log((e.path[0]).id)
+        });
+    }
+}
+
 
 const addBookButton = document.getElementById('add-book')
 const formContainer = document.getElementById('form-container')
@@ -88,6 +92,7 @@ const closeFormButton = document.getElementById('close-form')
 const hide = document.createAttribute('hidden')
 const form = document.forms["form"]
 const submitForm = document.getElementById('submit')
+const remove = document.querySelectorAll('.remove-button')
 
 
 
@@ -111,3 +116,4 @@ submitForm.addEventListener('click', () => {
       }
       displayBooks()
 })
+
