@@ -44,6 +44,10 @@ function displayBooks() {
         let pages = document.createElement('p')
         let read = document.createElement('p')
         let removeBook = document.createElement('button')
+        let toggleRead = document.createElement('button')
+        toggleRead.setAttribute('class', 'toggle-read-button')
+        toggleRead.setAttribute('id', buttonCount.toString())
+        toggleRead.innerText = 'Toggle Read Status'
         removeBook.setAttribute('class', 'remove-button')
         bookHeading.innerText = myLibrary[i].title
         authorName.innerText = myLibrary[i].author
@@ -56,11 +60,13 @@ function displayBooks() {
         tempElement.appendChild(pages)
         tempElement.appendChild(read)
         tempElement.appendChild(removeBook)
+        tempElement.appendChild(toggleRead)
         grid.appendChild(tempElement)
         buttonCount += 1
         console.log(myLibrary[i].info())
     }
     addEventListenerByClass('remove-button', 'click')
+    addEventListenerByClassV('toggle-read-button', 'click')
 }
 
 
@@ -80,6 +86,8 @@ function formValid() {
     return true
 }
 
+
+
 function addEventListenerByClass(className, event) {
     var list = document.getElementsByClassName(className);
     for (var i = 0, len = list.length; i < len; i++) {
@@ -87,6 +95,16 @@ function addEventListenerByClass(className, event) {
             console.log((e.path[0]).id)
             myLibrary.splice((e.path[0]).id, 1)
              displayBooks()                         
+        });
+    }
+}
+
+function addEventListenerByClassV(className, event) {
+    var list = document.getElementsByClassName(className);
+    for (var i = 0, len = list.length; i < len; i++) {
+        list[i].addEventListener(event, e => {
+             myLibrary[(e.path[0]).id].read = myLibrary[(e.path[0]).id].read ? false : true 
+             displayBooks()                      
         });
     }
 }
