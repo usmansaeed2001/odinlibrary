@@ -31,32 +31,36 @@ let buttonCount = 0
 
 
 function displayBooks() {
+    
+    grid.innerText =''
+    buttonCount = 0
+    
+    
     for (let i = 0; i < myLibrary.length; i++) {
-        console.log(myLibrary[i].info())
-    }
-    let tempElement = document.createElement('div')
-    tempElement.setAttribute('class', 'book')
-    let bookHeading = document.createElement('h2')
-    let authorName = document.createElement('p')
-    let pages = document.createElement('p')
-    let read = document.createElement('p')
-    let removeBook = document.createElement('button')
-    removeBook.innerText = "Remove"
-    removeBook.setAttribute('class', 'remove-button')
-    removeBook.setAttribute('id', buttonCount.toString())
-
-    buttonCount += 1
-    bookHeading.innerText = myLibrary[myLibrary.length - 1].title
-    authorName.innerText = myLibrary[myLibrary.length - 1].author
-    pages.innerText = myLibrary[myLibrary.length - 1].pages
-    read.innerText = myLibrary[myLibrary.length - 1].read ? "Read":"Not Read Yet"
+        let tempElement = document.createElement('div')
+        tempElement.setAttribute('class', 'book')
+        let bookHeading = document.createElement('h2')
+        let authorName = document.createElement('p')
+        let pages = document.createElement('p')
+        let read = document.createElement('p')
+        let removeBook = document.createElement('button')
+        removeBook.setAttribute('class', 'remove-button')
+        bookHeading.innerText = myLibrary[i].title
+        authorName.innerText = myLibrary[i].author
+        pages.innerText = myLibrary[i].pages
+        read.innerText = myLibrary[i].read ? "Read":"Not Read Yet"
+        removeBook.innerText = "Remove"
+        removeBook.setAttribute('id', buttonCount.toString())
         tempElement.appendChild(bookHeading)
         tempElement.appendChild(authorName)
         tempElement.appendChild(pages)
         tempElement.appendChild(read)
         tempElement.appendChild(removeBook)
         grid.appendChild(tempElement)
-        addEventListenerByClass('remove-button', 'click')
+        buttonCount += 1
+        console.log(myLibrary[i].info())
+    }
+    addEventListenerByClass('remove-button', 'click')
 }
 
 
@@ -82,13 +86,13 @@ function addEventListenerByClass(className, event) {
         list[i].addEventListener(event, e => {
             console.log((e.path[0]).id)
             myLibrary.splice((e.path[0]).id, 1)
-            console.log(myLibrary)
-            grid.textContent = ''
-            buttonCount = 0
-            if(myLibrary.length > 0) {
-                displayBooks()                               //Change the display book function, currently it
+         //   console.log(myLibrary)
+         //   grid.textContent = ''
+          //  buttonCount = 0
+          //  if(myLibrary.length > 0) {
+             displayBooks()                               //Change the display book function, currently it
                                                             // prints the last book of lib, we need it to print all the books in the lib
-            }
+          //  }
         });
     }
 }
