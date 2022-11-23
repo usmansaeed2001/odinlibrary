@@ -86,13 +86,7 @@ function addEventListenerByClass(className, event) {
         list[i].addEventListener(event, e => {
             console.log((e.path[0]).id)
             myLibrary.splice((e.path[0]).id, 1)
-         //   console.log(myLibrary)
-         //   grid.textContent = ''
-          //  buttonCount = 0
-          //  if(myLibrary.length > 0) {
-             displayBooks()                               //Change the display book function, currently it
-                                                            // prints the last book of lib, we need it to print all the books in the lib
-          //  }
+             displayBooks()                         
         });
     }
 }
