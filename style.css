@@ -5,6 +5,13 @@ body {
     box-sizing: border-box;
 }
 
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
 #header {
     top: 0px;
     background-color: #1c2e4a;
@@ -29,6 +36,8 @@ body {
 .book {
     background-color: white;
     border-radius: 10%;
+    font-family: "JetBrains Mono",monospace;
+    padding: 15px;
 }
 
 
@@ -107,4 +116,9 @@ body {
 .button-30:active {
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
+}
+
+.book-buttons {
+  height: 20px;
+  font-size: 10px;
 }

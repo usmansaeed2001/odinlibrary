@@ -44,13 +44,13 @@ function displayBooks() {
         let read = document.createElement('p')
         let removeBook = document.createElement('button')
         let toggleRead = document.createElement('button')
-        toggleRead.setAttribute('class', 'toggle-read-button')
+        removeBook.classList.add('remove-button', 'button-30', 'book-buttons')
+        toggleRead.classList.add('toggle-read-button', 'button-30', 'book-buttons')
         toggleRead.setAttribute('id', (buttonCount + 100).toString())
-        toggleRead.innerText = 'Toggle Read Status'
-        removeBook.setAttribute('class', 'remove-button')
+        toggleRead.innerText = 'Toggle Read'
         bookHeading.innerText = myLibrary[i].title
-        authorName.innerText = myLibrary[i].author
-        pages.innerText = myLibrary[i].pages
+        authorName.innerText = `by ${myLibrary[i].author}`
+        pages.innerText = `Pages: ${myLibrary[i].pages}`
         read.innerText = myLibrary[i].read ? "Read":"Not Read Yet"
         removeBook.innerText = "Remove"
         removeBook.setAttribute('id', buttonCount.toString())
