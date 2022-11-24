@@ -35,7 +35,6 @@ function displayBooks() {
     grid.innerText =''
     buttonCount = 0
     
-    
     for (let i = 0; i < myLibrary.length; i++) {
         let tempElement = document.createElement('div')
         tempElement.setAttribute('class', 'book')
@@ -46,7 +45,7 @@ function displayBooks() {
         let removeBook = document.createElement('button')
         let toggleRead = document.createElement('button')
         toggleRead.setAttribute('class', 'toggle-read-button')
-        toggleRead.setAttribute('id', buttonCount.toString())
+        toggleRead.setAttribute('id', (buttonCount + 100).toString())
         toggleRead.innerText = 'Toggle Read Status'
         removeBook.setAttribute('class', 'remove-button')
         bookHeading.innerText = myLibrary[i].title
@@ -103,8 +102,8 @@ function addEventListenerByClassV(className, event) {
     var list = document.getElementsByClassName(className);
     for (var i = 0, len = list.length; i < len; i++) {
         list[i].addEventListener(event, e => {
-             myLibrary[(e.path[0]).id].read = myLibrary[(e.path[0]).id].read ? false : true 
-             displayBooks()                      
+             myLibrary[(e.path[0]).id - 100].read = myLibrary[(e.path[0]).id - 100].read ? false : true 
+             grid.children[e.path[0].id - 100].children[3].innerText = myLibrary[(e.path[0]).id - 100].read ? "Read":"Not Read Yet"        
         });
     }
 }
